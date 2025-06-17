@@ -14,7 +14,7 @@ func TestNewGame(t *testing.T) {
 		pegs    uint
 		disks   uint
 		Player  *Player
-		want    *Field
+		want    *Game
 		wantErr error
 	}{
 		{
@@ -29,7 +29,7 @@ func TestNewGame(t *testing.T) {
 			pegs:    1,
 			disks:   1,
 			Player:  nil,
-			wantErr: ErrNoPlayer,
+			wantErr: ErrPlayerCannotBeNil,
 		},
 		{
 			name:    "err if no disks",
@@ -84,7 +84,7 @@ func TestNewGame(t *testing.T) {
 	}
 }
 
-func validateGame(t *testing.T, wantPegs uint, wantDisks uint, player *Player, field *Field) {
+func validateGame(t *testing.T, wantPegs uint, wantDisks uint, player *Player, field *Game) {
 	t.Helper()
 
 	assert.NotNil(t, field, "field must not be nil")
